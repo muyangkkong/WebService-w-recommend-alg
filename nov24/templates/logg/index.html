@@ -1,0 +1,63 @@
+{% load static %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to AdBridge</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #E0E7FF, #FFFFFF);
+    }
+
+    .container {
+      text-align: center;
+      background-color: white;
+      padding: 50px 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .welcome-text {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #1F2937;
+      margin-bottom: 20px;
+    }
+
+    #log-button {
+      background-color: #2563EB;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      border: none;
+    }
+
+    #log-button:hover {
+      background-color: #1E40AF;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <p class="welcome-text">Welcome to AdBridge!</p>
+    <button id="log-button">
+        Login
+    </button>
+  <script src="{% static 'logg/js/start.js' %}"></script>
+  </div>
+</body>
+</html>

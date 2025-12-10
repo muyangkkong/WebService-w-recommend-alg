@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdBridge - Advertiser My Page</title>
+    <link rel="stylesheet" href="{% static 'logg/css/detailpageinfl.css' %}">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1>AdBridge</h1>
+            <span>Advertiser</span>
+        </div>
+        <h2>My Page</h2>
+
+    </header>
+
+    <main>
+        <div class="profile-container">
+            <div class="profile-image">
+                <img src="man.png" alt="Advertiser Profile">
+            </div>
+            <div class="profile-info">
+                <h3>인플루언서 {{account}}</h3>
+                <p class="content"><strong>주요 콘텐츠</strong></p>
+                <p class="content-description">{{influencer_data_profile.contents}}</p>
+
+                <p class="content"><strong>활동 방식</strong></p>
+                <p class="content-description">{{influencer_data_profile.method}}</p>
+
+                <p class="content"><strong>희망 광고 금액</strong></p>
+                <p class="content-description">{{influencer_data_profile.max_price}}~{{influencer_data_profile.min_price}}</p>
+                <button type="button" onclick="button_event();">신청하기</button>
+                <button onclick="window.location.href='{{influencer_data_profile.snslink}}';">SNS 바로 가기</button>
+            </div>
+        </div>
+
+        <div class="advertiser-stats">
+            <!-- <h4>상세 통계</h4> -->
+            <div class="stat-container">
+                <div class="stat-item">
+                    <span class="stat-title">구독자 수</span>
+                    <div class="stat-values">
+                        <span class="value">{{channel_data.subscribers_count}}</span>
+                        <!--<span class="growth">+ 3명 / 일</span>-->
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">최근 50개 누적 조회수</span>
+                    <div class="stat-values">
+                        <span class="value">{{channel_data.total_view_count}}</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">평균 조회수</span>
+                    <div class="stat-values">
+                        <span class="value">{{channel_data.totalrate_view_count}}</span>
+                    </div>
+                </div>
+                <!--<div class="stat-item">
+                    <span class="stat-title">영상 수</span>
+                    <div class="stat-values">
+                        <span class="value">76개</span>
+                        <span class="growth">주간 2개 업로드</span>
+                    </div>-->
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">좋아요 비율</span>
+                    <div class="stat-values">
+                        <span class="value">{{channel_data.rateoflikes}}</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-title">평균 댓글 수</span>
+                    <div class="stat-values">
+                        <span class="value">{{channel_data.totalrate_comment_count}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="profile-description">
+            <h4>상세 설명</h4>
+            <p>{{influencer_data_profile.description}}</p>
+        </div>
+
+        <div class="advertiser-image">
+            <img src={{influencer_data_profile.detail_1}} alt="Advertiser Image">
+        </div>
+
+        <div class="advertiser-image">
+            <img src={{influencer_data_profile.detail_2}} alt="Advertiser Image">
+        </div>
+    </main>
+
+    <footer>
+        <p>© 2024 AdBridge</p>
+    </footer>
+</body>
+</html>

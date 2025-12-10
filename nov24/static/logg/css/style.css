@@ -1,0 +1,131 @@
+.frame-32,
+.frame-32 * {
+  box-sizing: border-box;
+}
+.frame-32 {
+  background: #ffffff;
+  height: 1024px;
+  position: relative;
+  overflow: hidden;
+}
+.group-20 {
+  position: absolute;
+  inset: 0;
+}
+.frame-33 {
+  background: var(--white, #ffffff);
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 472px;
+  height: 64px;
+  position: absolute;
+  left: 484px;
+  top: 277px;
+  box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.div {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 484px;
+  top: 243px;
+}
+.group-21 {
+  position: absolute;
+  inset: 0;
+}
+.frame-332 {
+  background: var(--white, #ffffff);
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 472px;
+  height: 64px;
+  position: absolute;
+  left: 484px;
+  top: 406px;
+  box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.div2 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 484px;
+  top: 372px;
+}
+.group-22 {
+  position: absolute;
+  inset: 0;
+}
+.frame-333 {
+  background: var(--white, #ffffff);
+  border-radius: 20px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 1px;
+  width: 472px;
+  height: 64px;
+  position: absolute;
+  left: 484px;
+  top: 535px;
+  box-shadow: inset 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+}
+.div3 {
+  color: #000000;
+  text-align: left;
+  font-family: "Inter-Regular", sans-serif;
+  font-size: 20px;
+  font-weight: 400;
+  position: absolute;
+  left: 484px;
+  top: 501px;
+}
+.div4 {
+  color: #000000;
+  text-align: center;
+  font-family: "Inter-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: 601px;
+  top: 105px;
+  width: 234px;
+  height: 85px;
+}
+.frame-34 {
+  background: #ffffff;
+  border-radius: 30px;
+  border-style: solid;
+  border-color: #000000;
+  border-width: 3px;
+  width: 472px;
+  height: 85px;
+  position: absolute;
+  left: 482px;
+  top: 661px;
+  overflow: hidden;
+}
+.div5 {
+  color: var(--black, #4a3f3f);
+  text-align: center;
+  font-family: "Inter-ExtraBold", sans-serif;
+  font-size: 40px;
+  font-weight: 800;
+  position: absolute;
+  left: calc(50% - 236px);
+  bottom: -11px;
+  width: 472px;
+  height: 74px;
+}

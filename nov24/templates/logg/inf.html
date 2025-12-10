@@ -1,0 +1,160 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AdBridge Influencer</title>
+    <link rel="stylesheet" href="{% static 'logg/css/inf.css' %}">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+              <a href="/user/inf/">
+                  <h1>AdBridge <span>Influencer</span></h1>
+              </a>
+            </header>
+
+            <section class="filter-section">
+                <h2>Category</h2>
+                <ul>
+                    <li><label><input type="checkbox" name="category" value="cosmetic"> Cosmetic</label></li>
+                    <li><label><input type="checkbox" name="category" value="fashion"> Fashion</label></li>
+                    <li><label><input type="checkbox" name="category" value="food"> Food</label></li>
+                    <li><label><input type="checkbox" name="category" value="photo"> Photo</label></li>
+                    <li><label><input type="checkbox" name="category" value="health"> Health</label></li>
+                    <li><label><input type="checkbox" name="category" value="other"> Other</label></li>
+                </ul>
+            </section>
+            <section class="filter-section">
+                <h2>Price</h2>
+                <ul>
+                    <li><label><input type="checkbox" name="price" value="1"> ~10만 원</label></li>
+                    <li><label><input type="checkbox" name="price" value="2"> 10~20만 원</label></li>
+                    <li><label><input type="checkbox" name="price" value="3"> 20~30만 원</label></li>
+                    <li><label><input type="checkbox" name="price" value="4"> 30~40만 원</label></li>
+                    <li><label><input type="checkbox" name="price" value="5"> 40~50만 원</label></li>
+                    <li><label><input type="checkbox" name="price" value="6"> 50만 원 이상</label></li>
+                </ul>
+            </section>
+            <section class="filter-section">
+                <h2>SNS</h2>
+                <ul>
+                    <li><label><input type="checkbox" name="sns" value="instagram"> Instagram</label></li>
+                    <li><label><input type="checkbox" name="sns" value="youtube"> Youtube</label></li>
+                    <li><label><input type="checkbox" name="sns" value="other"> Other</label></li>
+                </ul>
+            </section>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="content">
+            <header class="content-header">
+                <nav>
+                    <a href="/mypage/" class="nav-link">My Page</a>
+                </nav>
+            </header>
+
+
+            <section class="ad-list-section">
+                <ul class="ad-list">
+                    {% for ad in ads %}
+                    <li class="ad-item">
+                        <div class="image-container">
+                            <a href="{%url 'detailView' ad.pk %}">
+                                <img src="{{ ad.thumbnail.url }}" alt="{{ ad.title }}">
+                            </a>
+                        </div>
+
+                        <p class="ad-title">광고주: {{ ad.title }}</p>
+                        <p class="ad-category">Category: {{ ad.category }}</p>
+                        <p class="ad-sns">SNS: {{ ad.sns }}</p>
+                        <p class="ad-budget">금액: {{ ad.min_budget }}원 - {{ad.max_budget}}원</p>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </main>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const checkboxes = document.querySelectorAll('.filter-category, .filter-price, .filter-sns');
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener('change', function() {
+            // 필터 데이터 수집
+            const filters = getSelectedFilters();
+
+            // 서버에 요청 보내기
+            fetchFilteredAds(filters);
+        });
+    });
+
+    function getSelectedFilters() {
+        const categories = [];
+        const prices = [];
+        const sns = [];
+
+        document.querySelectorAll('.filter-category:checked').forEach(function(checkbox) {
+            categories.push(checkbox.value);
+        });
+
+        document.querySelectorAll('.filter-price:checked').forEach(function(checkbox) {
+            prices.push(checkbox.value);
+        });
+
+        document.querySelectorAll('.filter-sns:checked').forEach(function(checkbox) {
+            sns.push(checkbox.value);
+        });
+
+        return { categories, prices, sns };
+    }
+
+    function fetchFilteredAds(filters) {
+        fetch('/filter_ads/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': '{{ csrf_token }}' // Django CSRF Token
+            },
+            body: JSON.stringify(filters)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // ad-list 갱신
+            updateAdList(data.ads);
+        })
+        .catch(error => console.error('Error:', error));
+    }
+
+    function updateAdList(ads) {
+        const adList = document.querySelector('.ad-list');
+        adList.innerHTML = ''; // 기존 목록 초기화
+
+        ads.forEach(ad => {
+            const listItem = `
+                <li class="ad-item">
+                    <a href="${ad.url}">
+                        <img src="${ad.thumbnail}" alt="${ad.title}">
+                    </a>
+                    <p class="ad-title">광고주: ${ad.title}</p>
+                    <p class="ad-category">Category: ${ad.category}</p>
+                    <p class="ad-sns">SNS: ${ad.sns}</p>
+                    <p class="ad-budget">금액: ${ad.min_budget}원 - ${ad.max_budget}원</p>
+                </li>
+            `;
+            adList.insertAdjacentHTML('beforeend', listItem);
+        });
+    }
+});
+
+    </script>
+
+
+
+</body>
+</html>

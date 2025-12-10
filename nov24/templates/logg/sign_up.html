@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up</title>
+  <link rel="stylesheet" href="{% static 'logg/css/login.css'%}">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>AdBridge</h1>
+    </div>
+    <div class="right">
+      <div class="form-container">
+        <h2>Sign Up</h2>
+        <p>Already have an account? <a href="/login/">Sign In</a></p>
+        <form method="POST">
+           {% csrf_token %}
+          <div class="user-type">
+            <label><input type="radio" name="user_type" value="advertiser"> 광고주</label>
+            <label><input type="radio" name="user_type" value="influencer" checked> 인플루언서</label>
+          </div>
+
+          <div class="input-group">
+            <input type="text" name="username" placeholder="Username" required>
+          </div>
+          <div class="input-group">
+            <input type="password" name="password" placeholder="Password" required>
+          </div>
+          <div class="input-group">
+            <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+          </div>
+          <div class="input-group">
+            <input type="email" name="email" placeholder="Email Address" required>
+          </div>
+          <div class="input-group">
+            <input type="text" name="nickname" placeholder="Nickname" required>
+          </div>
+          <div class="input-group">
+            <select name="field" required>
+              <option value="" disabled selected>Select</option>
+              <option value="fashion">Fashion</option>
+              <option value="food">Food</option>
+              <option value="health">Health</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn">Sign Up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+<script src="{% static 'logg/js/sign_up.js'%}"></script>
+</body>
+</html>

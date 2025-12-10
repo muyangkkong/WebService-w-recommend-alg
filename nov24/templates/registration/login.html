@@ -1,0 +1,24 @@
+<!-- templates/accounts/login.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
+
+</head>
+<body>
+    <h2>로그인</h2>
+    {% if form.errors %}
+        <div class="error">
+            <p>사용자 이름 또는 비밀번호가 올바르지 않습니다.</p>
+        </div>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">로그인</button>
+    </form>
+    <p>계정이 없으신가요? <a >회원가입</a></p>
+</body>
+</html>

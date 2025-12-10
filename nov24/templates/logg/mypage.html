@@ -1,0 +1,90 @@
+<!-- templates/mypage.html -->
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>My Page</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 30px; }
+        .section { margin-bottom: 40px; }
+        .section h2 { margin-bottom: 15px; }
+        .card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+        .card img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        .profile-list { display: flex; flex-direction: column; gap: 15px; }
+        .profile-item { display: flex; align-items: center; }
+    </style>
+</head>
+<body>
+
+    <h1>{{ user.nickname }}님의 My Page</h1>
+    <p>포지션: {{ user.position }}</p>
+    <p>관심 분야: {{ user.field }}</p>
+
+    <hr/>
+
+    <!-- 찜한 마케터 -->
+    <div class="section">
+        <h2>❤️ 찜한 마케터</h2>
+
+        {% if liked_marketers %}
+            <div class="profile-list">
+                {% for marketer in liked_marketers %}
+                    <div class="card">
+                        <div class="profile-item">
+                            <img src="{{ marketer.thumbnail.url }}" alt="thumbnail">
+                            <div>
+                                <p><strong>{{ marketer.post_account.nickname }}</strong></p>
+                                <p>주소: {{ marketer.address }}</p>
+                                <p>웹사이트: <a href="{{ marketer.website }}" target="_blank">{{ marketer.website }}</a></p>
+                            </div>
+                        </div>
+                        <a href="{% url 'user:unlike_marketer' marketer.id %}">찜 취소</a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>찜한 마케터가 없습니다.</p>
+        {% endif %}
+    </div>
+
+    <hr/>
+
+    <!-- 찜한 인플루언서 -->
+    <div class="section">
+        <h2>⭐ 찜한 인플루언서</h2>
+
+        {% if liked_influencers %}
+            <div class="profile-list">
+                {% for influencer in liked_influencers %}
+                    <div class="card">
+                        <div class="profile-item">
+                            <img src="{{ influencer.thumbnail.url }}" alt="thumbnail">
+                            <div>
+                                <p><strong>{{ influencer.display_name }}</strong></p>
+                                <p>SNS: <a href="{{ influencer.sns_link }}" target="_blank">{{ influencer.sns_link }}</a></p>
+                                <p>분야: {{ influencer.method }}</p>
+                            </div>
+                        </div>
+                        <!-- 인플루언서 찜 취소 기능 만들었으면 추가 -->
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>찜한 인플루언서가 없습니다.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>

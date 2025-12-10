@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AdBridge Login</title>
+  <link rel="stylesheet" href={% static 'logg/css/login.css'%}>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>AdBridge</h1>
+      <p>Welcome!</p>
+    </div>
+    <div class="right">
+      <div class="form-container">
+        <h2>Sign In</h2>
+          <form method="POST">
+
+        <div class="user-type">
+          <label><input type="radio" name="user_type" value = "advertiser"> 광고주</label>
+          <label><input type="radio" name="user_type" value = "influencer" checked> 인플루언서</label>
+        </div>
+            {% csrf_token %}
+        <div class="input-group">
+          <input type="text" name="username",placeholder="Username">
+        </div>
+
+              <div class="input-group">
+          <input type="password" name="password",placeholder="Password">
+        </div>
+        <a href="mypage/" class="signin-button">Signin</a>
+          </form>
+
+        <div class="signup-link">
+          Don't have an account? <a href="signup/">Create an Account</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

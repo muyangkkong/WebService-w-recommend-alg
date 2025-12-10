@@ -1,0 +1,102 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>AdBridge Advertiser</title>
+  <link rel="stylesheet" href="{% static 'logg/css/postform.css' %}">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="logo">
+          <a href = /login/adv/>
+             <h1>AdBridge <span>Advertiser</span></h1>
+          </a>
+
+      </div>
+      <nav>
+        <a href="/mypage">My Page</a>
+      </nav>
+    </header>
+
+    <form class="ad-form">
+      <label for="ad-image">표지 사진</label>
+      <div class="ad-image">
+        <div class="image-box" id="image-box">
+          <span>사진을 첨부해주세요</span>
+        </div>
+        <input type="file" id="ad-image" name="ad-image" accept="image/*" onchange="previewImage(event)">
+        <button type="button" onclick="document.getElementById('ad-image').click()">사진 추가</button>
+      </div>
+
+      <label for="ad-title">광고 글 제목</label>
+      <input type="text" id="ad-title" name="ad-title" placeholder="광고 제목을 입력하세요">
+
+      <label for="ad-product">광고 상품명</label>
+      <input type="text" id="ad-product" name="ad-product" placeholder="상품명을 입력하세요">
+
+      <label for="ad-method">희망 광고 방법</label>
+      <input type="text" id="ad-method" name="ad-method" placeholder="광고 방법을 입력하세요">
+
+      <label for="min-amount">광고 금액</label>
+      <div class="amount">
+        <input type="number" id="min-amount" name="min-amount" placeholder="최소 금액" min="0"> 만원
+        <span>~</span>
+        <input type="number" id="max-amount" name="max-amount" placeholder="최대 금액" min="0"> 만원
+      </div>
+
+      <label for="ad-detail">상세정보</label>
+      <div class="ad-detail">
+        <textarea id="ad-detail" name="ad-detail" placeholder="광고에 대한 상세 설명을 입력하세요"></textarea>
+      </div>
+
+      <!-- 제품 사진 추가 -->
+      <label for="product-image">제품 사진</label>
+      <div class="ad-image">
+        <div class="image-box" id="product-image-box">
+          <span>제품 사진을 첨부해주세요</span>
+        </div>
+        <input type="file" id="product-image" name="product-image" accept="image/*" onchange="previewProductImage(event)">
+        <button type="button" onclick="document.getElementById('product-image').click()">사진 추가</button>
+      </div>
+
+      <button type="submit" class="submit-button">제출하기</button>
+    </form>
+  </div>
+
+  <script>
+    // 이미지 미리보기 함수 (표지 사진)
+    function previewImage(event) {
+      const imageBox = document.getElementById('image-box');
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          imageBox.style.backgroundImage = `url(${e.target.result})`;
+          imageBox.innerHTML = '';  // 이미지를 넣으면 텍스트를 삭제
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+
+    // 이미지 미리보기 함수 (제품 사진)
+    function previewProductImage(event) {
+      const productImageBox = document.getElementById('product-image-box');
+      const file = event.target.files[0];
+
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+          productImageBox.style.backgroundImage = `url(${e.target.result})`;
+          productImageBox.innerHTML = '';  // 이미지를 넣으면 텍스트를 삭제
+        };
+        reader.readAsDataURL(file);
+      }
+    }
+  </script>
+</body>
+</html>

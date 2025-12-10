@@ -1,0 +1,132 @@
+/* 기본 스타일 초기화 */
+body, h1, h2, h3, p, ul, li, a, button {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #ddd;
+}
+
+.header h1 {
+    font-size: 24px;
+}
+
+.header h1 span {
+    font-weight: normal;
+    color: gray;
+}
+
+.header .my-page {
+    text-decoration: none;
+    color: black;
+    font-size: 16px;
+}
+
+/* 메인 콘텐츠 */
+.main-content {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.image-placeholder {
+    width: 300px;
+    height: 300px;
+    background-color: #ccc;
+    border-radius: 10px;
+}
+
+.info-section {
+    flex-grow: 1;
+}
+
+.info-section h2 {
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.info-section ul {
+    list-style: none;
+    line-height: 1.8;
+}
+
+.button-section {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.apply-button, .inquiry-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.apply-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.inquiry-button {
+    background-color: #ddd;
+    color: black;
+}
+
+/* 광고주 정보 섹션 */
+.advertiser-info {
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+.advertiser-details {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.advertiser-image {
+    width: 80px;
+    height: 80px;
+    background-color: #c4b6b6;
+    border-radius: 50%;
+}
+
+.advertiser-text p {
+    margin-bottom: 5px;
+}
+
+/* 상세정보 섹션 */
+.details-info {
+    padding: 20px;
+}
+
+.details-image {
+    width: 100%;
+    height: 400px;
+    background-color: #c4b6b6;
+    margin-bottom: 20px;
+}
+
+.details-description {
+    height: 300px;
+    background-color: #c4b6b6;
+}
+
+/* 푸터 */
+footer {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: gray;
+}

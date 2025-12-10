@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href= "{% static 'logg/css/detailpageadv.css' %}">
+    <title>Detail Page</title>
+
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>AdBridge <span>Influencer</span></h1>
+            <a href="#" class="my-page">My Page</a>
+        </div>
+    </header>
+    <main>
+        <section class="main-content">
+            <div class="image-placeholder"></div>
+            <div class="info-section">
+                <h2>광고 제목 {{advertisement_data.title}}</h2>
+                <ul>
+                    <li><strong>광고 상품</strong>: {{advertisement_data.name}}</li>
+                    <li><strong>카테고리</strong>: {{advertisement_data.field}}</li>
+                    <li><strong>SNS</strong>: {{advertisement_data.sns}}</li>
+                    <li><strong>광고 방법</strong>: {{advertisement_data.method}}</li>
+                    <li><strong>광고 금액</strong>: {{advertisement_data.min_budget}}~{{advertisement_data.max_budget}}</li>
+                </ul>
+                <div class="button-section">
+                    <form name="form">
+                    <button type="button" onclick="button_event();">신청하기</button>
+                    <button class="inquiry-button">문의하기</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+        <section class="advertiser-info">
+            <h3>광고주 정보</h3>
+            <div class="advertiser-details">
+                <div class="advertiser-image"></div>
+                <div class="advertiser-text">
+                    <p>{{account}}</p>
+                    <p>{{advertiser_profile_data.website}}</p>
+                    <p>{{advertiser_profile_data.address}}</p>
+                </div>
+            </div>
+        </section>
+        <section class="details-info">
+            <h3>상세정보</h3>
+            <div class="details-image"></div>
+            <img src={{advertisement_data.detail_1}} alt=static.img>
+           <img src={{advertisement_data.detail_2}} alt=static.img>
+            <div class="details-description"></div>
+        </section>
+        <footer>
+            <p>{{advertisement_data.description}}</p>
+        </footer>
+    </main>
+<script src="{% static 'logg/js/detailpageadver.js'%}"></script>
+</body>
+</html>

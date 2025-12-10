@@ -1,0 +1,41 @@
+/* 기본 스타일 설정 */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* 화면 전체 높이를 사용 */
+}
+
+.container {
+  text-align: center;
+}
+
+.content h1 {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+.content .welcome-message {
+  font-size: 18px;
+  color: #555;
+  margin-bottom: 40px;
+}
+
+.start-button {
+  display: inline-block;
+  padding: 20px 40px; /* 버튼 크기 증가 */
+  font-size: 24px; /* 글씨 크기 증가 */
+  color: white;
+  background-color: #007bff;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+  background-color: #0056b3;
+}
